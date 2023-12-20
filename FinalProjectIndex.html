@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Hunter Index</title>
+    <style>
+        /* Styling based on the Help page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff; 
+            color: #333333;
+        }
+
+        h1, h2, h3 {
+            color: #b22727;
+            background-color: aliceblue;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        footer a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav style="text-align: center;">
+            <ul style="list-style: none; padding: 0;">
+                <li style="display: inline; margin-right: 20px;"><a href="/Users/tobiarewa/Downloads/INST377/inst377-git-sample-oarewa4582/FinalProjectIndex.html">Index</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="/Users/tobiarewa/Downloads/About_page.html">About</a></li>
+                <li style="display: inline;"><a href="/Users/tobiarewa/Downloads/Help_page.html">Help</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <h1 style="text-align: center; background-color: aliceblue;">Monster Hunter API</h1>
+    <img src="/Users/tobiarewa/Downloads/monster.jpeg" alt="Monster Image" style="width:100%; height:auto;" />
+
+
+    <div class="search-bar">
+        <input type="text" id="searchQuery" placeholder="Search...">
+        <select id="searchCategory">
+            <option value="weapons">Weapons</option>
+            <option value="skills">Skills</option>
+            <option value="armor">Armor</option>
+        </select>
+        <button onclick="searchDatabase()">Search</button>
+    </div>
+
+    <div id="results"></div>
+
+    <footer>
+        <p>Connect with us:</p>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">LinkedIn</a>
+        <p>Contact us at: support@monsterhunter.com</p>
+    </footer>
+
+    <script>
+        function searchDatabase() {
+            var query = document.getElementById('searchQuery').value;
+            var category = document.getElementById('searchCategory').value;
+            var url = 'https://mhw-db.com/' + category;
+
+            if (category === 'weapons' || category === 'skills' || category === 'armor') {
+                url += query ? '/' + query : '';
+            }
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            // Assuming 'data' is an array of objects
+            data.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.textContent = item.name; // Modify as per your data structure
+                resultsContainer.appendChild(itemElement);
+            });
+        }
+    </script>
+</body>
+</html>
