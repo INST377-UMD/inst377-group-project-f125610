@@ -1,3 +1,4 @@
+Introduction:
 In the vast and intricate world of "Monster Hunter," navigating the wealth of game information can be a daunting task for players seeking details about weapons, skills, and armor. Our mission is to address this challenge and provide a solution that empowers "Monster Hunter" enthusiasts to effortlessly access crucial in-game information.
 
 The primary problem we aim to solve is the ease of information retrieval for players, specifically related to weapons systems, skill systems, armor, and various other aspects of the game. By streamlining the process of obtaining accurate and up-to-date information, we aim to enhance the gaming experience for "Monster Hunter" players.
